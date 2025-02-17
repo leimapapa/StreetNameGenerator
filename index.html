@@ -12,133 +12,133 @@
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0%25' stop-color='skyblue' stop-opacity='1' /%3E%3Cstop offset='70%25' stop-color='skyblue' stop-opacity='0.3' /%3E%3Cstop offset='100%25' stop-color='skyblue' stop-opacity='0' /%3E%3C/linearGradient%3E%3Cfilter id='sky'%3E%3CfeTurbulence baseFrequency='0.003 0.005' numOctaves='10' /%3E%3CfeColorMatrix type='hueRotate' values='0'%3E%3Canimate attributeName='values' from='0' to='360' dur='30s' repeatCount='indefinite' /%3E%3C/feColorMatrix%3E%3CfeColorMatrix values='4.2 -4.6 3.1 -1.4 4.8 -0.8 -0.8 -1.9 2.7 4.4 0.8 -3.6 4.1 1.9 4.3 -3.4 0.1 1.7 3.5 -2.1' /%3E%3CfeComposite operator='in' in2='SourceGraphic' /%3E%3C/filter%3E%3C/defs%3E%3Crect height='100%25' width='100%25' fill='url(%23grad)' /%3E%3Crect height='100%25' width='100%25' filter='url(%23sky)' /%3E%3C/svg%3E");
 	height: 100vh;
 	overflow-y: hidden;
-}
-.newStreet {
-	position: fixed;
-	bottom: 15px;
-	right: 15px;
-	height: 80px;
-	width: 80px;
-	font-family: monospace;
-	text-transform: uppercase;
-	background: none;
-	border: 2px solid #666;
-	border-radius: 5px;
-	cursor: pointer;
-}
-.newStreet:hover {
-	color: #999;
-	border: 2px solid #999;
-}
-.newStreet:active {
-	color: #099;
-	border: 2px solid #099;
-}
-.streetSign {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	cursor: pointer;
-	font-size: 200%;
-	font-family: monospace;
-	padding: 8px 36px 8px 36px;
-	border-radius: 10px;
-	background: forestgreen;
-	color: white;
-	text-align: center;
-	border: 4px solid white;
-	box-shadow: 2px 2px 5px -3px #000;
-	white-space: nowrap;
-	z-index: 2;
-	text-transform: uppercase;
-}
-.changing {
-	animation: spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1;
-}
-@keyframes spin {
-	from {
-		transform: translate(-50%, -50%) rotateY(0deg);
 	}
-	to {
-		transform: translate(-50%, -50%) rotateY(360deg);
+	.newStreet {
+		position: fixed;
+		bottom: 15px;
+		right: 15px;
+		height: 80px;
+		width: 80px;
+		font-family: monospace;
+		text-transform: uppercase;
+		background: none;
+		border: 2px solid #666;
+		border-radius: 5px;
+		cursor: pointer;
 	}
-}
-.pole {
-	position: absolute;
-	bottom: 0px;
-	left: 50%;
-	transform: translate(-50%);
-	height: 50%;
-	width: 20px;
-	background: linear-gradient(90deg, silver 20%, gray, silver 98%);
-	box-shadow: 2px 2px 5px -3px #000;
-}
-     </style>
-</head>
-<body>
-  <button class="newStreet" title="Generate a new random street name">New Street Name</button>
-<span class="streetSign"></span>
-<span class="pole"></span>
-<script>
-  const idyllicNames = {
-  animals: ["Dove", "Fawn", "Meadow", "Brook", "Willow", "Rabbit", "Fox", "Luna", "Lily", "Starling", "Sparrow", "Robin", "Blossom", "Whisper", "Honey", "Harmony", "Maple", "Cedar", "Juniper", "Petal", "Sunny", "Daisy", "Peach", "Breeze", "Pine", "River", "Grace", "Frost", "Cloud", "Feather", "Raindrop", "Pebble", "Moonbeam", "Cypress", "Echo", "Flora", "Tulip", "Raven", "Amber", "Dawn", "Misty", "Rose", "Ivy", "Lark", "Iris", "Poppy", "Aurora"],
-  birds: ["Skylark", "Wren", "Goldfinch", "Swallow", "Falcon", "Sparrow", "Bluebird", "Cardinal", "Hummingbird", "Blackbird", "Woodpecker", "Starling", "Kingfisher", "Warbler", "Nightingale", "Mockingbird", "Cuckoo", "Pheasant", "Eagle", "Hawk", "Owl", "Duck", "Goose", "Pelican", "Crane", "Stork", "Seagull", "Albatross", "Swift", "Finch", "Vulture", "Parrot", "Peacock", "Flamingo", "Turkey", "Penguin", "Dove", "Raven", "Crow", "Toucan", "Swan", "Magpie", "Quail", "Robin", "Thrush", "Heron", "Oriole"],
-  minerals: ["Amber", "Crystal", "Jade", "Jasper", "Opal", "Quartz", "Emerald", "Ruby", "Sapphire", "Diamond", "Topaz", "Agate", "Amethyst", "Garnet", "Moonstone", "Peridot", "Turquoise", "Aquamarine", "Malachite", "Lapis Lazuli", "Pearl", "Coral", "Onyx", "Obsidian", "Pyrite", "Celestite", "Aventurine", "Selenite", "Tiger's Eye", "Copper", "Gold", "Silver", "Amazonite", "Sunstone", "Zircon", "Beryl"],
-  seasons: ["Blossom", "Harvest", "Mist", "Sunrise", "Sunset", "Twilight", "Dusk", "Dawn", "Spring", "Summer", "Autumn", "Winter", "Frost", "Breeze", "Rain", "Sunshine", "Moonlight", "Morning", "Evening", "Night", "Midnight", "Noon", "Daybreak", "Serenade", "Aurora", "Horizon", "Solstice", "Equinox", "Fog", "Dew", "Frost", "Storm", "Calm", "Winds", "Thunder", "Lightning", "Whirlwind", "Blizzard", "Chill", "Glow", "Firefly", "Crescent", "Starlight", "Lantern", "Constellation"],
-	flowers: ["Rose", "Lily", "Daisy", "Sunflower", "Tulip", "Daffodil", "Poppy", "Peony", "Carnation", "Orchid", "Dahlia", "Cherry Blossom", "Hibiscus", "Lavender", "Azalea", "Magnolia", "Forget-Me-Not", "Lotus", "Chrysanthemum", "Jasmine", "Iris", "Marigold", "Snapdragon", "Aster", "Primrose", "Oak", "Elm"],
-	fruits: ["Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Raspberry", "Blackberry", "Pineapple", "Mango", "Peach", "Pear", "Plum", "Cherry", "Grapes", "Kiwi", "Watermelon", "Cantaloupe", "Honeydew", "Papaya", "Coconut", "Lemon", "Lime", "Grapefruit", "Apricot", "Nectarine", "Cranberry", "Fig", "Passionfruit", "Guava", "Pecan"],
-  other: ["Dream", "Serene", "Tranquil", "Charm", "Peace", "Wish", "Gentle", "Serenade", "Tranquility", "Whisper", "Graceful", "Joy", "Bliss", "Wonder", "Enchantment", "Radiance", "Harmony", "Fable", "Fantasy", "Elysium", "Paradise", "Ethereal", "Zen", "Whimsy", "Luminous", "Nirvana", "Sylvan", "Cascade", "Aura", "Adventure", "Ridge", "Prairie"]
-};
-const helperWords = ["Lone", "Crest", "Charm", "Sky", "Whisper", "Glimmer", "Tranquil", "Serenity", "Dream", "Mystic", "Gentle", "Enchanted", "Luminous", "Grace", "Harmony", "Radiant", "Radiance", "Ethereal", "Bliss", "Sylvan", "Calm", "Peace", "Twilight", "Serenade", "Sunny", "Fable", "Tranquility", "Glow", "Breeze", "Celestial", "Lullaby", "Zen", "Fantasy", "Aurora", "Elysium", "Paradise", "Soothing", "Whimsy", "Melody", "Eternal", "Wish", "Wonder", "Enchantment", "Cascade", "Aura", "Echo", "Fairy", "Halcyon"];
-
-const streetTypes = ["Trail", "Lane", "Road", "Avenue", "Street", "Way", "Drive", "Court", "Circle", "Path", "Boulevard", "Plaza", "Terrace", "Place", "Square", "Parkway", "Alley", "Grove", "Ridge", "Crescent", "Loop", "Promenade", "Meadow", "Gardens", "Row", "Crossing", "Vista", "Valley"];
-
-function generateStreetName() {
-	const p = 0.1; // probability of helper being after the idyllic word
-	const pp = 0.5; // probability of having a street type
-  const categories = ["animals", "birds", "minerals", "seasons", "flowers", "fruits", "other"];
-  const category = categories[Math.floor(Math.random() * categories.length)];
-  const idyllic = idyllicNames[category][Math.floor(Math.random() * idyllicNames[category].length)];
-  let streetName = idyllic;
-
-  // Determine if the helper should be before or after the idyllic word
-  const helperPlacement = Math.random() < p ? "before" : "after";
-  const helper = helperWords[Math.floor(Math.random() * helperWords.length)];
-
-  // Add helper based on placement
-  if (helperPlacement === "before") {
-    streetName = `${helper} ${streetName}`;
-  } else {
-    streetName = `${streetName} ${helper}`;
-  }
-
-  // Determine if a street type should be added
-  if (Math.random() < pp) {
-    const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
-    streetName = `${streetName} ${streetType}`;
-  }
-  return streetName;
-}
-
-
-function newStreet() {
-	const streetSign = document.querySelector('.streetSign')
-  streetSign.classList.add("changing");
-  // change mid animation
-	setTimeout(() => {
-    streetSign.textContent = generateStreetName();
-   }, 1000);
-  streetSign.addEventListener("animationend", () => {
-    // Remove the changing class once the animation ends
-    streetSign.classList.remove("changing");
-  }, { once: true });
-}
-document.querySelector('.streetSign').textContent = generateStreetName();
-
-document.querySelector('.newStreet').addEventListener('click', newStreet);
-document.querySelector('.streetSign').addEventListener('click', newStreet);
-document.querySelector('.pole').addEventListener('click', newStreet);
+	.newStreet:hover {
+		color: #999;
+		border: 2px solid #999;
+	}
+	.newStreet:active {
+		color: #099;
+		border: 2px solid #099;
+	}
+	.streetSign {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+		font-size: 200%;
+		font-family: monospace;
+		padding: 8px 36px 8px 36px;
+		border-radius: 10px;
+		background: forestgreen;
+		color: white;
+		text-align: center;
+		border: 4px solid white;
+		box-shadow: 2px 2px 5px -3px #000;
+		white-space: nowrap;
+		z-index: 2;
+		text-transform: uppercase;
+	}
+	.changing {
+		animation: spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1;
+	}
+	@keyframes spin {
+		from {
+			transform: translate(-50%, -50%) rotateY(0deg);
+		}
+		to {
+			transform: translate(-50%, -50%) rotateY(360deg);
+		}
+	}
+	.pole {
+		position: absolute;
+		bottom: 0px;
+		left: 50%;
+		transform: translate(-50%);
+		height: 50%;
+		width: 20px;
+		background: linear-gradient(90deg, silver 20%, gray, silver 98%);
+		box-shadow: 2px 2px 5px -3px #000;
+	}
+	     </style>
+	</head>
+	<body>
+	  <button class="newStreet" title="Generate a new random street name">New Street Name</button>
+	<span class="streetSign"></span>
+	<span class="pole"></span>
+	<script>
+	  const idyllicNames = {
+	  animals: ["Dove", "Fawn", "Meadow", "Brook", "Willow", "Rabbit", "Fox", "Luna", "Lily", "Starling", "Sparrow", "Robin", "Blossom", "Whisper", "Honey", "Harmony", "Maple", "Cedar", "Juniper", "Petal", "Sunny", "Daisy", "Peach", "Breeze", "Pine", "River", "Grace", "Frost", "Cloud", "Feather", "Raindrop", "Pebble", "Moonbeam", "Cypress", "Echo", "Flora", "Tulip", "Raven", "Amber", "Dawn", "Misty", "Rose", "Ivy", "Lark", "Iris", "Poppy", "Aurora"],
+	  birds: ["Skylark", "Wren", "Goldfinch", "Swallow", "Falcon", "Sparrow", "Bluebird", "Cardinal", "Hummingbird", "Blackbird", "Woodpecker", "Starling", "Kingfisher", "Warbler", "Nightingale", "Mockingbird", "Cuckoo", "Pheasant", "Eagle", "Hawk", "Owl", "Duck", "Goose", "Pelican", "Crane", "Stork", "Seagull", "Albatross", "Swift", "Finch", "Vulture", "Parrot", "Peacock", "Flamingo", "Turkey", "Penguin", "Dove", "Raven", "Crow", "Toucan", "Swan", "Magpie", "Quail", "Robin", "Thrush", "Heron", "Oriole"],
+	  minerals: ["Amber", "Crystal", "Jade", "Jasper", "Opal", "Quartz", "Emerald", "Ruby", "Sapphire", "Diamond", "Topaz", "Agate", "Amethyst", "Garnet", "Moonstone", "Peridot", "Turquoise", "Aquamarine", "Malachite", "Lapis Lazuli", "Pearl", "Coral", "Onyx", "Obsidian", "Pyrite", "Celestite", "Aventurine", "Selenite", "Tiger's Eye", "Copper", "Gold", "Silver", "Amazonite", "Sunstone", "Zircon", "Beryl"],
+	  seasons: ["Blossom", "Harvest", "Mist", "Sunrise", "Sunset", "Twilight", "Dusk", "Dawn", "Spring", "Summer", "Autumn", "Winter", "Frost", "Breeze", "Rain", "Sunshine", "Moonlight", "Morning", "Evening", "Night", "Midnight", "Noon", "Daybreak", "Serenade", "Aurora", "Horizon", "Solstice", "Equinox", "Fog", "Dew", "Frost", "Storm", "Calm", "Winds", "Thunder", "Lightning", "Whirlwind", "Blizzard", "Chill", "Glow", "Firefly", "Crescent", "Starlight", "Lantern", "Constellation"],
+		flowers: ["Rose", "Lily", "Daisy", "Sunflower", "Tulip", "Daffodil", "Poppy", "Peony", "Carnation", "Orchid", "Dahlia", "Cherry Blossom", "Hibiscus", "Lavender", "Azalea", "Magnolia", "Forget-Me-Not", "Lotus", "Chrysanthemum", "Jasmine", "Iris", "Marigold", "Snapdragon", "Aster", "Primrose", "Oak", "Elm"],
+		fruits: ["Apple", "Banana", "Orange", "Strawberry", "Blueberry", "Raspberry", "Blackberry", "Pineapple", "Mango", "Peach", "Pear", "Plum", "Cherry", "Grapes", "Kiwi", "Watermelon", "Cantaloupe", "Honeydew", "Papaya", "Coconut", "Lemon", "Lime", "Grapefruit", "Apricot", "Nectarine", "Cranberry", "Fig", "Passionfruit", "Guava", "Pecan"],
+	  other: ["Dream", "Serene", "Tranquil", "Charm", "Peace", "Wish", "Gentle", "Serenade", "Tranquility", "Whisper", "Graceful", "Joy", "Bliss", "Wonder", "Enchantment", "Radiance", "Harmony", "Fable", "Fantasy", "Elysium", "Paradise", "Ethereal", "Zen", "Whimsy", "Luminous", "Nirvana", "Sylvan", "Cascade", "Aura", "Adventure", "Ridge", "Prairie"]
+	};
+	const helperWords = ["Lone", "Crest", "Charm", "Sky", "Whisper", "Glimmer", "Tranquil", "Serenity", "Dream", "Mystic", "Gentle", "Enchanted", "Luminous", "Grace", "Harmony", "Radiant", "Radiance", "Ethereal", "Bliss", "Sylvan", "Calm", "Peace", "Twilight", "Serenade", "Sunny", "Fable", "Tranquility", "Glow", "Breeze", "Celestial", "Lullaby", "Zen", "Fantasy", "Aurora", "Elysium", "Paradise", "Soothing", "Whimsy", "Melody", "Eternal", "Wish", "Wonder", "Enchantment", "Cascade", "Aura", "Echo", "Fairy", "Halcyon"];
+	
+	const streetTypes = ["Trail", "Lane", "Road", "Avenue", "Street", "Way", "Drive", "Court", "Circle", "Path", "Boulevard", "Plaza", "Terrace", "Place", "Square", "Parkway", "Alley", "Grove", "Ridge", "Crescent", "Loop", "Promenade", "Meadow", "Gardens", "Row", "Crossing", "Vista", "Valley"];
+	
+	function generateStreetName() {
+		const p = 0.1; // probability of helper being after the idyllic word
+		const pp = 0.5; // probability of having a street type
+	  const categories = ["animals", "birds", "minerals", "seasons", "flowers", "fruits", "other"];
+	  const category = categories[Math.floor(Math.random() * categories.length)];
+	  const idyllic = idyllicNames[category][Math.floor(Math.random() * idyllicNames[category].length)];
+	  let streetName = idyllic;
+	
+	  // Determine if the helper should be before or after the idyllic word
+	  const helperPlacement = Math.random() < p ? "before" : "after";
+	  const helper = helperWords[Math.floor(Math.random() * helperWords.length)];
+	
+	  // Add helper based on placement
+	  if (helperPlacement === "before") {
+	    streetName = `${helper} ${streetName}`;
+	  } else {
+	    streetName = `${streetName} ${helper}`;
+	  }
+	
+	  // Determine if a street type should be added
+	  if (Math.random() < pp) {
+	    const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
+	    streetName = `${streetName} ${streetType}`;
+	  }
+	  return streetName;
+	}
+	
+	
+	function newStreet() {
+		const streetSign = document.querySelector('.streetSign')
+	  streetSign.classList.add("changing");
+	  // change mid animation
+		setTimeout(() => {
+	    streetSign.textContent = generateStreetName();
+	   }, 1000);
+	  streetSign.addEventListener("animationend", () => {
+	    // Remove the changing class once the animation ends
+	    streetSign.classList.remove("changing");
+	  }, { once: true });
+	}
+	document.querySelector('.streetSign').textContent = generateStreetName();
+	
+	document.querySelector('.newStreet').addEventListener('click', newStreet);
+	document.querySelector('.streetSign').addEventListener('click', newStreet);
+	document.querySelector('.pole').addEventListener('click', newStreet);
   </script>
 </body>
 </html>
